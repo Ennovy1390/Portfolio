@@ -1,123 +1,111 @@
 var img;
-var initials ='jm'; // your initials
-var choice = '1'; // starting choice, so it is not empty
-var screenbg = 250; // off white background
-var lastscreenshot=61; // last screenshot never taken
+var choice = "1";
+var screenbg = 220;
 
 function preload() {
-// preload() runs once, it may make you wait
-//  img = loadImage('74.jpg');  // cat.jpg needs to be next to this .js file
-// you can link to an image on your github account
-  img = loadImage('https://dma-git.github.io/images/74.png');
+  img = loadImage("74.png");
 }
 
 function setup() {
-createCanvas(600, 600);  // canvas size
-background(screenbg);   // use our background screen color
-
+  createCanvas(600, 600);
+  background(220, 215, 245);
 }
 
 function draw() {
   if (keyIsPressed) {
-    choice = key; // set choice to the key that was pressed
-    clear_print(); // check to see if it is clear screen or save image
+    choice = key;
   }
-  if (mouseIsPressed){
-    newkeyChoice(choice);  // if the mouse is pressed call newkeyChoice
+
+  if (mouseIsPressed) {
+    newkeyChoice(choice);
   }
 }
 
-function newkeyChoice(toolChoice) { //toolchoice is the key that was pressed
-  // the key mapping if statements that you can change to do anything you want.
-  // just make sure each key option has the a stroke or fill and then what type of 
-  // graphic function
+function newkeyChoice(toolChoice) {
 
- if (toolChoice == '1' ) {  // first tool
-   
-    fill(180,220,255);
+  if (toolChoice == "1") {
     noStroke();
+    fill(220,235,255);
     circle(mouseX, mouseY, 15);
-    
-  } else if (toolChoice == '2') { // second tool
+  }
 
-    fill(220,220,255)
-    circle(mouseX, mouseY, 30);
-    fill(screenbg);
-    circle(mouseX+8, mouseY, 25);
-  } else if (toolChoice == '3') { // third tool
-
-  fill(200,0,255,120);
-  circle(mouseX+random(-10,10), mouseY+random(-10,10), 10);
-     
-  } else if (toolChoice == '4') {
-
+  else if (toolChoice == "2") {
     noStroke();
-  fill(100,150,255,20);
-  circle(mouseX, mouseY, 80);
-  } else if (key == '5') { // this tool calls a function
-  fill(255,100,200);
-  circle(mouseX-10, mouseY, 15);
-  circle(mouseX+10, mouseY, 15);
-  circle(mouseX, mouseY-10, 15);
-  circle(mouseX, mouseY+10, 15);
+    fill(205,195,245);
+    circle(mouseX, mouseY, 30);
+    fill(220,215,245);
+    circle(mouseX + 8, mouseY, 24);
+  }
 
-  fill(255,255,0);
-  circle(mouseX, mouseY, 10);
-  } else if (toolChoice == '6') {
+  else if (toolChoice == "3") {
+    stroke(180,120,255);
+    line(mouseX-5,mouseY,mouseX+5,mouseY);
+    line(mouseX,mouseY-5,mouseX,mouseY+5);
+  }
 
-    stroke(0,200,0);
-  line(mouseX, mouseY, mouseX+random(-10,10), mouseY-30);
-  } else if (toolChoice == '7') {
+  else if (toolChoice == "4") {
+    noStroke();
+    fill(190,180,255,30);
+    circle(mouseX, mouseY, 80);
+  }
 
-    fill(random(100,255),random(100,255),100);
-    ellipse(mouseX, mouseY, 20, 35);
-  } else if (toolChoice == '8') {
+  else if (toolChoice == "5") {
+    noStroke();
 
-  fill(255,150,255);
+    fill(235,175,220);
+    circle(mouseX-10,mouseY,15);
+    circle(mouseX+10,mouseY,15);
+    circle(mouseX,mouseY-10,15);
+    circle(mouseX,mouseY+10,15);
 
-  ellipse(mouseX-8,mouseY,15,12);
-  ellipse(mouseX+8,mouseY,15,12);
-  } else if (toolChoice == '9') {
+    fill(255,215,160);
+    circle(mouseX,mouseY,10);
+  }
 
-    fill(255,255,255,40);
-    circle(mouseX, mouseY, 60);
-  } else if (toolChoice == '0') {
-    stroke(0, 0);
-    fill(random(255), random(255), random(255), random(255));
-    rect(mouseX, mouseY, 200, 150);
-  } else if (toolChoice == 'g' || toolChoice == 'G') { // g places the image we pre-loaded
+  else if (toolChoice == "6") {
+    stroke(110,170,120);
+    line(mouseX,mouseY,mouseX+random(-8,8),mouseY-30);
+  }
+
+  else if (toolChoice == "7") {
+    noStroke();
+    fill(130,200,140);
+    ellipse(mouseX,mouseY,20,35);
+  }
+
+  else if (toolChoice == "8") {
+    noStroke();
+    fill(215,190,255);
+    ellipse(mouseX-8,mouseY,15,12);
+    ellipse(mouseX+8,mouseY,15,12);
+  }
+
+  else if (toolChoice == "9") {
+    noStroke();
+    fill(235,235,255,70);
+    circle(mouseX-15,mouseY,30);
+    circle(mouseX,mouseY-10,35);
+    circle(mouseX+15,mouseY,30);
+  }
+
+  else if (toolChoice == "g" || toolChoice == "G") {
     image(img, mouseX, mouseY, 100, 100);
-    
   }
- }
- 
-function testbox(r, g, b) {
-// this is a test function that will show you how you can put your own functions into the sketch
-  x = mouseX;
-  y = mouseY;
-  fill(r, g, b);
-  rect(x-50, y-50, 100, 100);
 
-}
-
-function clear_print() {
-// this will do one of two things, x clears the screen by resetting the background
-// p calls the routine saveme, which saves a copy of the screen
-  if (key == 'x' || key == 'X') {
-    background(screenbg); // set the screen back to the background color
-  } else if (key == 'p' || key == 'P') {
-     saveme();  // call saveme which saves an image of the screen
+  else if (toolChoice == "e" || toolChoice == "E") {
+    noStroke();
+    fill(220,215,245);
+    circle(mouseX, mouseY, 80);
   }
 }
 
-function saveme(){
-    //this will save the name as the intials, date, time and a millis counting number.
-    // it will always be larger in value then the last one.
-  filename=initials+day() + hour() + minute() +second();
-  if (second()!=lastscreenshot) { // don't take a screenshot if you just took one
-    saveCanvas(filename, 'jpg');
-    key="";
+function keyPressed() {
+
+  if (key == "x" || key == "X") {
+    background(220,215,245);
   }
-  lastscreenshot=second(); // set this to the current second so no more than one per second
-  
+
+  if (key == "p" || key == "P") {
+    saveCanvas("MoonGarden", "jpg");
+  }
 }
