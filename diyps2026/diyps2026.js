@@ -11,7 +11,7 @@ function preload() {
 function setup() {
   screenbg = color(35, 45, 120);
 
-  createCanvas(600, 600);
+  createCanvas(850, 600);
   background(screenbg);
 }
 
